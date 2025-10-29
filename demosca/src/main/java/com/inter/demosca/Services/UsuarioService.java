@@ -28,7 +28,7 @@ public class UsuarioService {
             // Atualiza a Usuario
             UsuarioEntity UsuarioAtualizada = UsuarioExistente.get();
             UsuarioAtualizada.setCod_funcionario(Usuario.getCod_funcionario());
-            UsuarioAtualizada.setUser(Usuario.getUser());
+            UsuarioAtualizada.setUsuario(Usuario.getUsuario());
             UsuarioAtualizada.setSenha(Usuario.getSenha());
             UsuarioAtualizada.setStatus(Usuario.getStatus());
             UsuarioAtualizada.setTipo_usuario(Usuario.getTipo_usuario());

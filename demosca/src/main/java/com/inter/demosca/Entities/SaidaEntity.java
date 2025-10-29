@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="tb_saida")
 public class SaidaEntity extends MovimentacaoEntity {
 
     @Column(nullable = false)

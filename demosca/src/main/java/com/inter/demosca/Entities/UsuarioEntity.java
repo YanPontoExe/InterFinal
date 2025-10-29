@@ -11,12 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="tb_user")
 public class UsuarioEntity extends FuncionarioEntity {
     @Column(nullable = false)
     private int cod_funcionario;
     @Column(length = 15, nullable = false)
-    private String user;
+    private String usuario;
     @Column(length = 12, nullable = false)
     private String senha;
     private boolean status; //true Ativo ou false Inativo
