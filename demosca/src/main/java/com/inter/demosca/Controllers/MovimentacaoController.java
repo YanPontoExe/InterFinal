@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inter.demosca.Entities.MovimentacaoEntity;
-import com.inter.demosca.Services.MovimentacaoService;
+import com.inter.demosca.Services.MovimentacaoService; 
 
 import lombok.RequiredArgsConstructor;
 @RestController

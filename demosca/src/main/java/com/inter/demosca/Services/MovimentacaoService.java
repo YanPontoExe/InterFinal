@@ -24,24 +24,21 @@ public class MovimentacaoService {
         Optional<MovimentacaoEntity> MovimentacaoExistente = 
         MovimentacaoRepository.findById(id);
 
-        if (MovimentacaoExistente.isPresent()) {
-            // Atualiza a Movimentacao
-            MovimentacaoEntity MovimentacaoAtualizada = MovimentacaoExistente.get();
-            MovimentacaoAtualizada.setCod_material(Movimentacao.getCod_material());  // Atualiza os campos necessários
-            MovimentacaoAtualizada.setQuantidade(Movimentacao.getQuantidade());  // Atualiza os campos necessários
-            MovimentacaoAtualizada.setSetor(Movimentacao.getSetor());  // Atualiza os campos necessários
-            
+                if (MovimentacaoExistente.isPresent()) {
+            MovimentacaoEntity movimentacaoAtualizada = MovimentacaoExistente.get();
+
+            movimentacaoAtualizada.setCod_material(Movimentacao.getCod_material());
+            movimentacaoAtualizada.setQuantidade(Movimentacao.getQuantidade());
             // Atualiza o usuário associado
-            Optional<UsuarioEntity> usuarioOpt = usuarioRepository.findById(Movimentacao.getUsuario().getCodFuncionario());
-            if (usuarioOpt.isPresent()) {
-                movimentacaoAtualizada.setUsuario(usuarioOpt.get());
+            Optional<MovimentacaoEntity> MovimentacaoOpt = MovimentacaoRepository.findById(Movimentacao.getId_movimentacao());
+            if (MovimentacaoOpt.isPresent()) {
+                movimentacaoAtualizada.setId_movimentacao(MovimentacaoOpt.get().getId_movimentacao());
             } else {
                 throw new RuntimeException("Usuário não encontrado");
             }
-            
-            return MovimentacaoRepository.save(MovimentacaoAtualizada);  // Salva o Movimentacao atualizado
+
+            return MovimentacaoRepository.save(movimentacaoAtualizada);
         } else {
-            // Caso o Movimentacao não exista, retorna null
             return null;
         }
     }

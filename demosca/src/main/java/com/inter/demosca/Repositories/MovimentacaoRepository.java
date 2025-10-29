@@ -8,4 +8,4 @@ import com.inter.demosca.Entities.MovimentacaoEntity;
 @Repository
 public interface MovimentacaoRepository extends JpaRepository<MovimentacaoEntity, Integer>{
 
-}
+} 
