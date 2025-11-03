@@ -30,5 +30,5 @@ public class MaterialEntity {
     @JoinColumn( name="id_fornecedor", nullable = false) //chave estrangeira de fornecedor
     private int cod_fornecedor; 
     @Column(nullable = false)
-    private LocalDateTime dataCadastro; //data  de criação do registro do sorvete
+    private LocalDateTime dataCadastro; //data  de criação do registro do material
 }
