@@ -12,12 +12,27 @@ text-align: center;
 background-color: transparent;
 }
 
-button {
-padding: 8px;
-margin: 5px 0;
-background-color: #17173d;
-color:#ddd
+Button {
+	background-color:#17173d;
+	border-radius:10px;
+	border:1px solid #17173d;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
 }
+Button:hover {
+	background-color:#3838bd;
+}
+Button:active {
+	position:relative;
+	top:1px;
+}
+
 
 label{
     float: left;
@@ -35,7 +50,7 @@ input {
 }
 
 .center-window{
-    width: 300px;
+    width: 400px;
     height: 300px;
     position: absolute;
     top: 50%;
@@ -50,4 +65,8 @@ input {
     background-color: #17173d;
     display: flex;
     padding: 10px;
+  }
+
+  .return{
+    float: left;
   }

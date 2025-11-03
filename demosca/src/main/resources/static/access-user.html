@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js"></script>
 </head>
 <body>
     <div class="topo"><h3>EstoKar</h3></div>
     <div class="container">
+        <br><button onclick="return_index()" class="return"> voltar</button>
             <div class="center-window">
                 <h1>Cadastrar Usuário</h1>
                 <form th:action="@{/Usuario}" method="post">
