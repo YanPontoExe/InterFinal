@@ -36,3 +36,46 @@ async function cadastrar_login(){
         alert("Erro ao cadastrar login: " + error);
     }
 }
+
+//funcção para cadastrar login do funcionario
+async function cadastrar_login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    try {
+        let response = await fetch("/Usuario", {
+            method: "POST",
+            headers: {  
+                        "nome:": username,
+                        "senha:": password
+                     }
+        });
+    } catch (error) {
+        alert("Erro ao cadastrar login: " + error);
+    }
+}
+
+//tentativa de validação de usuario
+async function validar_login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    try {
+        let response = await fetch("/Usuario", {
+            method: "GET"
+        });
+
+        let data = await response.json();
+
+        let user = data[0].user;
+        let senha = data[0].senha;
+
+    if(password == senha && username == user){
+        window.location.href = "index.html";
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+    } catch (error) {
+        
+    }
+}
