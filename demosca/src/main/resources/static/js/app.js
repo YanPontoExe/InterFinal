@@ -78,4 +78,4 @@ async function validar_login(){
     } catch (error) {
         
     }
-}
+} 
