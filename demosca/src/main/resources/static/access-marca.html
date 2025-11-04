@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Marca</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <div class="topo"><h3>EstoKar</h3></div>
+    <div class="container">
+        <br><button onclick="return_index()" class="return"> voltar</button>
+
+            <div class="center-window">
+                <h1>Cadastrar Marca</h1>
+                <form th:action="/Marca" method="post">
+                    <label for="username">Nome da Marca:</label><br>
+                    <input type="text" id="nome_marca" name="nome_marca" required>
+                    <br>
+
+                    <label for="username">País de Origem:</label><br>
+                    <input type="text" id="pais_origem" name="pais_origem" required>
+                    <br>
+
+                    <label for="username">Descrição:</label><br>
+                    <input type="text" id="descricao" name="descricao" required>
+                    <br>
+
+                    <label for="text">Status:</label><br>
+
+                    <input type="radio" id="status" name="status" value="1" required>
+                    <label for="ativo" class="radin" class="radin">Ativo</label><br><br>
+
+                    <input type="radio" id="status" name="status" value="0" required>
+                    <label for="inativo" class="radin">Inativo</label><br><br>
+
+
+                    <button type="reset">Limpar</button>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+</body>
+</html>
