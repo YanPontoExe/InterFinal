@@ -28,7 +28,20 @@ public class MaterialService {
             // Atualiza a Material
             MaterialEntity MaterialAtualizada = MaterialExistente.get();
             MaterialAtualizada.setDescricao(Material.getDescricao());  // Atualiza os campos necessários
-            return MaterialRepository.save(MaterialAtualizada);  // Salva o Material atualizado
+            MaterialAtualizada.setMarca(Material.getMarca());  // Atualiza os campos necessários
+            MaterialAtualizada.setCod_fornecedor(Material.getCod_fornecedor());  // Atualiza os campos necessários
+            MaterialAtualizada.setDataCadastro(Material.getDataCadastro());  // Atualiza os campos necessários
+            MaterialAtualizada.setStatus(Material.getStatus());  // Atualiza os campos necessários
+            
+            // Atualiza o usuário associado
+            Optional<MaterialEntity> MaterialOpt = MaterialRepository.findById(Material.getId_material());
+            if (MaterialOpt.isPresent()) {
+                MaterialAtualizada.setId_material(MaterialOpt.get().getId_material());
+            } else {
+                throw new RuntimeException("Usuário não encontrado");
+            }
+            
+        return MaterialRepository.save(MaterialAtualizada);  // Salva o Material atualizado
         } else {
             // Caso o Material não exista, retorna null
             return null;

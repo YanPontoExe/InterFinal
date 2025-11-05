@@ -30,7 +30,6 @@ funcionário
     int Status
     
             usuário
-                int id_user
                 String user 
                 String senha
                 boolean status

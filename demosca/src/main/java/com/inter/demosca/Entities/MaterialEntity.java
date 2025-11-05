@@ -31,4 +31,5 @@ public class MaterialEntity {
     private int cod_fornecedor; 
     @Column(nullable = false)
     private LocalDateTime dataCadastro; //data  de criação do registro do material
+    private int status;
 }
