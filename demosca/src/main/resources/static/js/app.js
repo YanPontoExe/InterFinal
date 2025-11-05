@@ -23,7 +23,7 @@ function exit(){
     window.location.href = "login.html";
 }
 
-<<<<<<< HEAD
+
     try {
         let response = await fetch("/Usuario", {
             method: "POST",
@@ -35,7 +35,6 @@ function exit(){
     } catch (error) {
         alert("Erro ao cadastrar login: " + error);
     }
-}
 
 //funcção para cadastrar login do funcionario
 async function cadastrar_login(){
