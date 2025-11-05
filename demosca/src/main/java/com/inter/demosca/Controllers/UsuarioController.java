@@ -60,10 +60,4 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    
-
-	@GetMapping("/login")
-	public String login() {
-		return "access-user";
-	}
 }
