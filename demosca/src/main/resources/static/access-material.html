@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Material</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <div class="topo"><h3>EstoKar</h3></div>
+    <div class="container">
+        <br><button onclick="return_index()" class="return"> voltar</button>
+
+            <div class="center-window">
+                <h1>Cadastrar Material</h1>
+                <form th:action="@{/Material}" method="post">
+                    <label for="username">Descrição:</label><br>
+                    <input type="text" id="descricao" name="descricao" required>
+                    <br>
+
+                    <label for="text">Marca:</label><br>
+                    <input type="text" id="marca" name="marca" required>
+                    <br>
+                    
+                    <label for="text">Fornecedor:</label><br>
+                    <input type="text" id="fornecedor" name="fornecedor" required list="datalist">
+                    <datalist id="datalist">
+                        <option value="Fornecedor A">Fornecedor A</option>
+                        <option value="Fornecedor B">Fornecedor B</option>
+                    </datalist><br>
+                    
+                    <button type="reset">Limpar</button>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+</body>
+</html>
