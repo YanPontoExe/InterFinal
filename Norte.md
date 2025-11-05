@@ -29,11 +29,12 @@ funcionário
     LocalDate dataContratacao
     int Status
     
-            usuário
-                String user 
-                String senha
-                boolean status
-                boolean tipo_usuario
+usuário
+    int id_usuario
+    String user 
+    String senha
+    boolean status
+    boolean tipo_usuario
 
 material
     int id_material
