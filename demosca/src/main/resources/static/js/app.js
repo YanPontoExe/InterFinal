@@ -19,11 +19,11 @@ function entrar_marcas(){
     window.location.href = "access-marca.html";
 }
 
-//funcção para cadastrar login do funcionario
-async function cadastrar_login(){
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+function exit(){
+    window.location.href = "login.html";
+}
 
+<<<<<<< HEAD
     try {
         let response = await fetch("/Usuario", {
             method: "POST",
