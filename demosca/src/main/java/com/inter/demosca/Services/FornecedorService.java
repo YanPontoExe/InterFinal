@@ -27,7 +27,8 @@ public class FornecedorService {
         if (FornecedorExistente.isPresent()) {
             // Atualiza a Fornecedor
             FornecedorEntity FornecedorAtualizada = FornecedorExistente.get();
-            FornecedorAtualizada.setDescricao(Fornecedor.getDescricao());  // Atualiza os campos necessários
+            FornecedorAtualizada.setNome_fornecedor(Fornecedor.getNome_fornecedor());  // Atualiza os campos necessários
+            FornecedorAtualizada.setCnpj(Fornecedor.getCnpj()); // Atualiza os campos necessários
             return FornecedorRepository.save(FornecedorAtualizada);  // Salva o Fornecedor atualizado
         } else {
             // Caso o Fornecedor não exista, retorna null

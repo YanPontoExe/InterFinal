@@ -26,13 +26,5 @@ public class FornecedorEntity {
     @Column(length = 50, nullable = false)
     private String nome_fornecedor;
     @Column(length = 50, nullable = false)
-    private String material_fornecido;
-    @Column(nullable = false)
-    private int valor;
-    @Column(nullable = false)
-    private int cod_fornecedor;
-    @Column(length = 100, nullable = false)
-    private String descricao;
-    @Column(length = 50, nullable = false)
-    private String marca;
+    private String cnpj;
 }
