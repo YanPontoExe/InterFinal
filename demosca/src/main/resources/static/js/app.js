@@ -46,8 +46,11 @@ async function cadastrar_login(){
         let response = await fetch("/Usuario", {
             method: "POST",
             headers: {  
-                        "nome:": username,
-                        "senha:": password
+                        "usuario:": username,
+                        "senha:": password, 
+                        "cod_funcionario:":1,
+                        "status:": 1,
+                        "tipo_usuario:": 1
                      }
         });
     } catch (error) {
@@ -79,3 +82,24 @@ async function validar_login(){
         
     }
 } 
+
+//funcção para cadastrar funcionario
+async function cadastrar_login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    try {
+        let response = await fetch("/Usuario", {
+            method: "POST",
+            headers: {  
+                        "usuario:": username,
+                        "senha:": password, 
+                        "cod_funcionario:":1,
+                        "status:": 1,
+                        "tipo_usuario:": 1
+                     }
+        });
+    } catch (error) {
+        alert("Erro ao cadastrar login: " + error);
+    }
+}
