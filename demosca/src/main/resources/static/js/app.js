@@ -1,26 +1,26 @@
 //funções para navegação entre páginas, pelos button's
 function entrar_materiais(){
-    window.location.href = "/access-material.html";
+    window.location.href = "/access-material";
 }
 
 function return_index(){
-    window.location.href = "/index.html";
+    window.location.href = "/";
 }
 
 function entrar_usuarios(){
-    window.location.href = "/access-user.html";
+    window.location.href = "/access-user";
 }
 
 function entrar_fornecedores(){
-    window.location.href = "/access-fornecedor.html";
+    window.location.href = "/access-fornecedor";
 }
 
 function entrar_marcas(){
-    window.location.href = "/access-marca.html";
+    window.location.href = "/access-marca";
 }
 
 function exit(){
-    window.location.href = "/login.html";
+    window.location.href = "/login";
 }
 
 
@@ -91,4 +91,26 @@ async function cadastrar_login(){
     } catch (error) {
         alert("Erro ao cadastrar login: " + error);
     }
+}
+
+//funcção para cadastrar fornecedor
+async function cadastrar_fornecedor() {
+  const nome_fornecedor = document.getElementById("nome_fornecedor").value;
+  const cnpj = document.getElementById("cnpj").value;
+
+  try {
+    const response = await fetch("/Fornecedores", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome_fornecedor, cnpj })
+    });
+
+    if (!response.ok) {
+      throw new Error("Erro HTTP: " + response.status);
+    }
+
+    alert("Fornecedor cadastrado com sucesso!");
+  } catch (error) {
+    alert("Erro ao cadastrar fornecedor: " + error);
+  }
 }
