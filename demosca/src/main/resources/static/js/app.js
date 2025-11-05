@@ -24,17 +24,7 @@ function exit(){
 }
 
 
-    try {
-        let response = await fetch("/Usuario", {
-            method: "POST",
-            headers: {  
-                        "nome:": username,
-                        "senha:": password
-                     }
-        });
-    } catch (error) {
-        alert("Erro ao cadastrar login: " + error);
-    }
+
 
 //funcção para cadastrar login do funcionario
 async function cadastrar_login(){
