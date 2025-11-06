@@ -30,7 +30,7 @@ public class UsuarioService {
             UsuarioAtualizada.setCod_funcionario(Usuario.getCod_funcionario());
             UsuarioAtualizada.setUsuario(Usuario.getUsuario());
             UsuarioAtualizada.setSenha(Usuario.getSenha());
-            UsuarioAtualizada.setStatus(Usuario.getStatus());
+            UsuarioAtualizada.setStatus(Usuario.isStatus());
             UsuarioAtualizada.setTipo_usuario(Usuario.getTipo_usuario());
             
             return UsuarioRepository.save(UsuarioAtualizada);  // Salva o Usuario atualizado

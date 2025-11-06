@@ -29,6 +29,7 @@ public class MovimentacaoService {
 
             movimentacaoAtualizada.setCod_material(Movimentacao.getCod_material());
             movimentacaoAtualizada.setQuantidade(Movimentacao.getQuantidade());
+            
             // Atualiza o usuário associado
             Optional<MovimentacaoEntity> MovimentacaoOpt = MovimentacaoRepository.findById(Movimentacao.getId_movimentacao());
             if (MovimentacaoOpt.isPresent()) {
