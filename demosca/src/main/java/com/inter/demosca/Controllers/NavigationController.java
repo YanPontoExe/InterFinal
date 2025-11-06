@@ -12,12 +12,22 @@ public class NavigationController {
     }
 
     @GetMapping("/access-fornecedor")
-    public String fornecedor() {
+    public String cadastrar_fornecedor() {
         return "access-fornecedor";
     }
 
     @GetMapping("/access-marca")
-    public String marca(){
+    public String cadastrar_marca(){
         return "access-marca";
+    }
+
+    @GetMapping("/access-user")
+    public String cadastrar_usuario(){
+        return "access-user";
+    }
+
+    @GetMapping("/access-material")
+    public String cadastrar_material(){
+        return "access-material";
     }
 }

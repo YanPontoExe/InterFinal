@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/app.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <script th:src="@{/js/app.js}" defer></script>
     <div class="topo"><h3>EstoKar</h3></div>
     <div class="container">
         <br><button onclick="return_index()" class="return"> voltar</button>
             <div class="center-window">
                 <h1>Cadastrar Usuário</h1>
 
-                <form th:action="/Usuario" method="post">
+                <form th:action="@{/Usuario}" method="post">
 
                     <label for="username">Nome de Usuário:</label><br>
                     <input type="text" id="username" name="username" required>
@@ -36,10 +36,10 @@
 
 
                     <label for="text">Tipo de acesso:</label><br><br>
-                    <input type="radio" id="tipo_usuario" name="tipo_usuario" value="1" required>
+                    <input type="radio" id="comum" name="tipo_usuario" value="1" required>
                     <label for="tipo_usuario">acesso comum</label><br><br>
 
-                    <input type="radio" id="tipo_usuario" name="tipo_usuario" value="0" required>
+                    <input type="radio" id="completo" name="tipo_usuario" value="0" required>
                     <label for="tipo_usuario">acesso completo</label><br><br>
 
                     <button type="reset">Limpar</button>
