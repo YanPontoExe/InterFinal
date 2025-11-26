@@ -61,9 +61,4 @@ public class UsuarioController {
     }
 
     
-
-	@GetMapping("/login")
-	public String login() {
-		return "access-user";
-	}
 }
