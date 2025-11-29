@@ -1,7 +1,8 @@
 package com.inter.demosca.Controllers;
 
 import java.util.List;
- 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +29,12 @@ public class MaterialController {
     public ResponseEntity<List<MaterialEntity>> listarTodos() {
         List<MaterialEntity> lista = MaterialService.listarTodos();
         return ResponseEntity.ok().body(lista);
+    }
+    //ativação da função de total de movimentações do material no SQL Server
+    @GetMapping("/{id}/total-movimentacoes")
+    public ResponseEntity<Integer> getTotalMovimentacoes(@PathVariable Integer id) {
+        Integer total = MaterialService.obterTotalMovimentacoes(id);
+        return ResponseEntity.ok(total);
     }
  
     @PostMapping

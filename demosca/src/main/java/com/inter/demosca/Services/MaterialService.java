@@ -3,6 +3,7 @@ package com.inter.demosca.Services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inter.demosca.Entities.MaterialEntity;
@@ -19,6 +20,12 @@ public class MaterialService {
 
         return MaterialRepository.save(Material);
     }
+
+    //ativação da função de total de movimentações do material no SQL Server 
+    public Integer obterTotalMovimentacoes(Integer idMaterial) {
+        return MaterialRepository.buscarTotalMovimentacoes(idMaterial);
+    }
+
     public MaterialEntity editar(int id, MaterialEntity Material) {
         // Verifique se a Material existe
         Optional<MaterialEntity> MaterialExistente = 
