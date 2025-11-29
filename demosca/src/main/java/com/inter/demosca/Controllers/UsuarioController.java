@@ -4,6 +4,7 @@ import java.util.List;
  
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inter.demosca.Entities.UsuarioEntity;
+import com.inter.demosca.Repositories.UsuarioRepository;
 import com.inter.demosca.Services.UsuarioService;
 
 import lombok.RequiredArgsConstructor;
@@ -59,6 +61,13 @@ public class UsuarioController {
         UsuarioService.excluir(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/Registrar")
+    public String registrar(@RequestBody UsuarioEntity usuario, PasswordEncoder encoder, UsuarioRepository repo) {
+        usuario.setSenha(encoder.encode(usuario.getSenha()));
+        repo.save(usuario);
+        return "Usuário registrado!";
+}
 
     
 }

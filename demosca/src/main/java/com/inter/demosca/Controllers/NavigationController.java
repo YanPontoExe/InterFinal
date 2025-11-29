@@ -1,7 +1,10 @@
 package com.inter.demosca.Controllers;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class NavigationController {
@@ -30,4 +33,17 @@ public class NavigationController {
     public String cadastrar_material(){
         return "access-material";
     }
+
+    
+    @PostMapping("/auth")
+public String login(@RequestParam String username,
+                    @RequestParam String password) {
+
+    System.out.println("DEBUG LOGIN → username: " + username + ", password: " + password);
+
+    UsernamePasswordAuthenticationToken authReq
+        = new UsernamePasswordAuthenticationToken(username, password);
+        System.out.println("Carregou usuario: " + username);
+    return "redirect:/";    
+}
 }

@@ -20,7 +20,7 @@ function entrar_marcas(){
 }
 
 function exit(){
-    window.location.href = "/login";
+    window.location.href = "/auth";
 }
 
 
