@@ -1,8 +1,10 @@
 package com.inter.demosca.Controllers;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,30 +14,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inter.demosca.Entities.MaterialEntity;
 import com.inter.demosca.Services.MaterialService;
 
 import lombok.RequiredArgsConstructor;
+@CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
 @RequestMapping(value = "/Material") //nomeando o path do Endpoint do controller, para ser executado no postman
 
 public class MaterialController {
     private final MaterialService MaterialService;
- 
-    @GetMapping
-    public ResponseEntity<List<MaterialEntity>> listarTodos() {
-        List<MaterialEntity> lista = MaterialService.listarTodos();
-        return ResponseEntity.ok().body(lista);
-    }
-    //ativação da função de total de movimentações do material no SQL Server
+
+    //ativação das funções do material no SQL Server
     @GetMapping("/{id}/total-movimentacoes")
     public ResponseEntity<Integer> getTotalMovimentacoes(@PathVariable Integer id) {
         Integer total = MaterialService.obterTotalMovimentacoes(id);
         return ResponseEntity.ok(total);
     }
+    
+    
+    //Mapeamento dos endpoints do MaterialController
+
+    @GetMapping
+    public ResponseEntity<List<MaterialEntity>> listarTodos() {
+        List<MaterialEntity> lista = MaterialService.listarTodos();
+        return ResponseEntity.ok().body(lista);
+    }
+    
+
  
     @PostMapping
     public ResponseEntity<MaterialEntity> incluir(@RequestBody

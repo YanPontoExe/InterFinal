@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Movimentações</title>
+</head>
+<body>
+    <h2>Teste da Function</h2>
+
+    <input id="materialId" type="number" placeholder="ID do material">
+    <button onclick="testar()">Testar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+       async function testar() {
+    try {
+        const id = document.getElementById("materialId").value;
+
+        const response = await fetch(`http://localhost:8080/Material/${id}/total-movimentacoes`);
+
+        if (!response.ok) {
+            throw new Error("Erro: " + response.status);
+        }
+
+        const total = await response.json();
+
+        document.getElementById("resultado").innerText =
+            "Total de movimentações: " + total;
+
+    } catch (e) {
+        document.getElementById("resultado").innerText =
+            "Falha ao chamar API → " + e.message;
+    }
+}
+    </script>
+
+    <!-- Baixei a extensao live server para rodar no navegador, ai basta inserir o id do material e clicar em testar, ele vai gerar o total de movimentações, tem 2 inserts a mais na tabela movimentacao pra poder testar a diferença dos IDs e ver que a function está funcionando corretamente -->
+
+</body>
+</html>

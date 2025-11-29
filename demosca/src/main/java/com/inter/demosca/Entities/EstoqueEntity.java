@@ -23,9 +23,8 @@ public class EstoqueEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; // mesma PK do Material
-
-    @MapsId            // <- faz o id ser FK para Material!
-    @JoinColumn( name="id_material", nullable = false) //chave estrangeira do usuario
+    @MapsId// <- faz o id ser FK para Material!
+    @JoinColumn( name="id_material", nullable = false) //chave estrangeira do material
     private int cod_material;
     private String qtd_atual;
     private String qtd_min;

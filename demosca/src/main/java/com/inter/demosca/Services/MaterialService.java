@@ -1,5 +1,6 @@
 package com.inter.demosca.Services;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +23,11 @@ public class MaterialService {
     }
 
     //ativação da função de total de movimentações do material no SQL Server 
+
     public Integer obterTotalMovimentacoes(Integer idMaterial) {
         return MaterialRepository.buscarTotalMovimentacoes(idMaterial);
     }
-
+    
     public MaterialEntity editar(int id, MaterialEntity Material) {
         // Verifique se a Material existe
         Optional<MaterialEntity> MaterialExistente = 
