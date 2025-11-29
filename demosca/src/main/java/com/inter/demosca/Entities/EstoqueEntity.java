@@ -1,9 +1,7 @@
 package com.inter.demosca.Entities;
 
-import java.time.LocalDateTime;
 
 //import jakarta.annotation.Generated;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,9 +21,9 @@ import lombok.NoArgsConstructor;
 @Table(name="tb_estoque")
 public class EstoqueEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; // mesma PK do Material
 
-    @OneToOne
     @MapsId            // <- faz o id ser FK para Material!
     @JoinColumn( name="id_material", nullable = false) //chave estrangeira do usuario
     private int cod_material;
