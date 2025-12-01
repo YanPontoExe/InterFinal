@@ -23,6 +23,10 @@ function exit(){
     window.location.href = "/auth";
 }
 
+function login(){
+    window.location.href = "/login";
+}
+
 
 
 

@@ -35,15 +35,8 @@ public class NavigationController {
     // }
 
     
-    @PostMapping("/login")
-public String login(@RequestParam String username,
-                    @RequestParam String password) {
-
-    System.out.println("DEBUG LOGIN → username: " + username + ", password: " + password);
-
-    UsernamePasswordAuthenticationToken authReq
-        = new UsernamePasswordAuthenticationToken(username, password);
-        System.out.println("Carregou usuario: " + username);
-    return "/";    
-}
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login"; // login.html
+    }
 }

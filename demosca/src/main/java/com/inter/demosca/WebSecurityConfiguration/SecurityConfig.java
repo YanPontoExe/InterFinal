@@ -1,4 +1,4 @@
-package com.inter.demosca;
+package com.inter.demosca.WebSecurityConfiguration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
