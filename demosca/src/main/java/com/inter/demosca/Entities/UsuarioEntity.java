@@ -19,12 +19,9 @@ public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_usuario;
-    @Column(nullable = false)
-    private int cod_funcionario;
     @Column(length = 15, nullable = false)
     private String usuario;
     @Column(length = 12, nullable = false)
     private String senha;
-    private boolean status; //true Ativo ou false Inativo
-    private int tipo_usuario; //1 usuario comum ou 2 usuario adm
+    
 }
