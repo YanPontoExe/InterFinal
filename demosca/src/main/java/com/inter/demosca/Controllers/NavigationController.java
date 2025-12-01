@@ -9,33 +9,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class NavigationController {
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+    // @GetMapping("/")
+    // public String index() {
+    //     return "index";
+    // }
 
-    @GetMapping("/access-fornecedor")
-    public String cadastrar_fornecedor() {
-        return "access-fornecedor";
-    }
+    // @GetMapping("/access-fornecedor")
+    // public String cadastrar_fornecedor() {
+    //     return "access-fornecedor";
+    // }
 
-    @GetMapping("/access-marca")
-    public String cadastrar_marca(){
-        return "access-marca";
-    }
+    // @GetMapping("/access-marca")
+    // public String cadastrar_marca(){
+    //     return "access-marca";
+    // }
 
-    @GetMapping("/access-user")
-    public String cadastrar_usuario(){
-        return "access-user";
-    }
+    // @GetMapping("/access-user")
+    // public String cadastrar_usuario(){
+    //     return "access-user";
+    // }
 
-    @GetMapping("/access-material")
-    public String cadastrar_material(){
-        return "access-material";
-    }
+    // @GetMapping("/access-material")
+    // public String cadastrar_material(){
+    //     return "access-material";
+    // }
 
     
-    @PostMapping("/auth")
+    @PostMapping("/login")
 public String login(@RequestParam String username,
                     @RequestParam String password) {
 
@@ -44,6 +44,6 @@ public String login(@RequestParam String username,
     UsernamePasswordAuthenticationToken authReq
         = new UsernamePasswordAuthenticationToken(username, password);
         System.out.println("Carregou usuario: " + username);
-    return "redirect:/";    
+    return "/";    
 }
 }

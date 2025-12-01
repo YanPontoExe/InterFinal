@@ -33,7 +33,7 @@ public class UsuarioController {
         return ResponseEntity.ok().body(lista);
     }
  
-    @PostMapping
+    @PostMapping("/Registrar")
     public ResponseEntity<UsuarioEntity> incluir(@RequestBody
     UsuarioEntity Usuario) {
         UsuarioEntity novo = UsuarioService.incluir(Usuario);
@@ -42,6 +42,12 @@ public class UsuarioController {
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public String registrar(@RequestBody UsuarioEntity usuario, PasswordEncoder encoder, UsuarioRepository repo) {
+        usuario.setSenha(encoder.encode(usuario.getSenha()));
+        repo.save(usuario);
+        return "Usuário registrado!";
     }
  
      @PutMapping("/{id}")
@@ -61,13 +67,5 @@ public class UsuarioController {
         UsuarioService.excluir(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-    @PostMapping("/Registrar")
-    public String registrar(@RequestBody UsuarioEntity usuario, PasswordEncoder encoder, UsuarioRepository repo) {
-        usuario.setSenha(encoder.encode(usuario.getSenha()));
-        repo.save(usuario);
-        return "Usuário registrado!";
-}
-
-    
+ 
 }
