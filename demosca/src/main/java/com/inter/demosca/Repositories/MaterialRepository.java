@@ -15,4 +15,4 @@ public interface MaterialRepository extends JpaRepository<MaterialEntity, Intege
      @Query(value = "SELECT dbo.fn_totalMovimentacoesMaterial(:idMaterial)", nativeQuery = true)
     Integer buscarTotalMovimentacoes(@Param("idMaterial") Integer idMaterial);
 
-}
+} 

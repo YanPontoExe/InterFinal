@@ -21,7 +21,7 @@ public class MovimentacaoService {
         return MovimentacaoRepository.save(Movimentacao);
     }
 
-    // Serviço procedure no sql
+    // Serviço procedure no sql mapeada
     public List<Object[]> getRelatorio(Integer id) {
         return MovimentacaoRepository.gerarRelatorio(id);
     }

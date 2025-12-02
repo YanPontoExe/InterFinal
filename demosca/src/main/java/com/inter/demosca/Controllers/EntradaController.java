@@ -24,6 +24,12 @@ import lombok.RequiredArgsConstructor;
 public class EntradaController {
  private final EntradaService EntradaService;
  
+    //Mapeia a function SQL de Listar todas as Entradas com um novo endpoint
+    @GetMapping("/total-entradas")
+    public List<EntradaEntity> listarTodas() {
+        return EntradaService.listarTodas();
+    }
+
     @GetMapping
     public ResponseEntity<List<EntradaEntity>> listarTodos() {
         List<EntradaEntity> lista = EntradaService.listarTodos();

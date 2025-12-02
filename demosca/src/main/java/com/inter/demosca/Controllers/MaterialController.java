@@ -30,7 +30,7 @@ public class MaterialController {
     private final MaterialService MaterialService;
 
     //ativação das funções do material no SQL Server
-    @GetMapping("/{id}/total-movimentacoes")
+    @GetMapping("/{id}/total-movimentacoes")  
     public ResponseEntity<Integer> getTotalMovimentacoes(@PathVariable Integer id) {
         Integer total = MaterialService.obterTotalMovimentacoes(id);
         return ResponseEntity.ok(total);

@@ -19,6 +19,12 @@ private final SaidaRepository SaidaRepository;
 
         return SaidaRepository.save(Saida);
     }
+
+    // Mapeia a function SQL de Listar todas as Saidas
+    public List<SaidaEntity> listarTodas() {
+        return SaidaRepository.listarSaidas();
+    }
+
     public SaidaEntity editar(int id, SaidaEntity Saida) {
         // Verifique se a Saida existe
         Optional<SaidaEntity> SaidaExistente = 

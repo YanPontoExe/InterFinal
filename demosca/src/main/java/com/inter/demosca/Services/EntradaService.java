@@ -19,6 +19,12 @@ public class EntradaService {
 
         return EntradaRepository.save(Entrada);
     }
+
+    // Mapeia a function SQL de Listar todas as Entradas
+    public List<EntradaEntity> listarTodas() {
+        return EntradaRepository.listarEntradas();
+    }
+
     public EntradaEntity editar(int id, EntradaEntity Entrada) {
         // Verifique se a Entrada existe
         Optional<EntradaEntity> EntradaExistente = 

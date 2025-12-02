@@ -28,6 +28,7 @@ public class MaterialService {
     }
     
     public MaterialEntity editar(int id, MaterialEntity Material) {
+
         // Verifique se a Material existe
         Optional<MaterialEntity> MaterialExistente = 
         MaterialRepository.findById(id);

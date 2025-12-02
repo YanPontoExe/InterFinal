@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class MovimentacaoController {
     private final MovimentacaoService MovimentacaoService;
 
-    //Endpoint procedure no sql
+    //Endpoint procedure no sql mapeada
     @GetMapping("/relatorio")
     public ResponseEntity<?> relatorio(
         @RequestParam(required = false) Integer idMaterial

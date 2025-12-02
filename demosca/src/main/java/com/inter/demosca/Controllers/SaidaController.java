@@ -24,6 +24,13 @@ import lombok.RequiredArgsConstructor;
 public class SaidaController {
 private final SaidaService SaidaService;
  
+    
+    //Mapeia a function SQL de Listar todas as Saidas com um novo endpoint
+    @GetMapping("/total-saidas")  
+    public List<SaidaEntity> listarTodas() {
+        return SaidaService.listarTodas();
+    }
+
     @GetMapping
     public ResponseEntity<List<SaidaEntity>> listarTodos() {
         List<SaidaEntity> lista = SaidaService.listarTodos();
