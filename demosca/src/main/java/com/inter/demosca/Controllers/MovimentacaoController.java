@@ -1,7 +1,9 @@
 package com.inter.demosca.Controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
- 
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inter.demosca.Entities.MovimentacaoEntity;
@@ -23,6 +26,16 @@ import lombok.RequiredArgsConstructor;
 
 public class MovimentacaoController {
     private final MovimentacaoService MovimentacaoService;
+
+    //Endpoint procedure no sql
+    @GetMapping("/relatorio")
+    public ResponseEntity<?> relatorio(
+        @RequestParam(required = false) Integer idMaterial
+    ) {
+        return ResponseEntity.ok(MovimentacaoService.getRelatorio(idMaterial));
+    }
+
+
  
     @GetMapping
     public ResponseEntity<List<MovimentacaoEntity>> listarTodos() {

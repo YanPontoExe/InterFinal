@@ -1,5 +1,6 @@
 package com.inter.demosca.Services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,12 @@ public class MovimentacaoService {
 
         return MovimentacaoRepository.save(Movimentacao);
     }
+
+    // Serviço procedure no sql
+    public List<Object[]> getRelatorio(Integer id) {
+        return MovimentacaoRepository.gerarRelatorio(id);
+    }
+
     public MovimentacaoEntity editar(int id, MovimentacaoEntity Movimentacao) {
         // Verifique se a Movimentacao existe
         Optional<MovimentacaoEntity> MovimentacaoExistente = 

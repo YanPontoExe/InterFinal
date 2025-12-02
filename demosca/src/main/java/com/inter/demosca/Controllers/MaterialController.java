@@ -38,7 +38,6 @@ public class MaterialController {
     
     
     //Mapeamento dos endpoints do MaterialController
-
     @GetMapping
     public ResponseEntity<List<MaterialEntity>> listarTodos() {
         List<MaterialEntity> lista = MaterialService.listarTodos();

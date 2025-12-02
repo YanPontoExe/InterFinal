@@ -23,7 +23,6 @@ public class MaterialService {
     }
 
     //ativação da função de total de movimentações do material no SQL Server 
-
     public Integer obterTotalMovimentacoes(Integer idMaterial) {
         return MaterialRepository.buscarTotalMovimentacoes(idMaterial);
     }
