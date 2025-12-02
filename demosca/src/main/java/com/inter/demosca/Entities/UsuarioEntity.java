@@ -20,8 +20,8 @@ public class UsuarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_usuario;
     @Column(length = 15, nullable = false)
-    private String usuario;
+    private String username;
     @Column(length = 155, nullable = false)
-    private String senha;
+    private String password;
     
 }

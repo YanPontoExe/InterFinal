@@ -17,12 +17,16 @@ public class UsuarioDetailsService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UsuarioEntity u = repo.findByUsuario(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+        UsuarioEntity u = repo.findByUsername(username);
+
+        if (u == null) {
+        throw new UsernameNotFoundException("Usuário não encontrado");
+        }
+
 
         return User
-                .withUsername(u.getUsuario())
-                .password(u.getSenha())      // tem que estar CRIPTOGRAFADA
+                .withUsername(u.getUsername())
+                .password(u.getPassword())      // tem que estar CRIPTOGRAFADA
                 .roles("USER")
                 .build();
     }

@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
     public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/Controllers/**") // Mapeia todos os endpoints /Controllers/**
-                .allowedOrigins("http://localhost:8080", "https://estokar-pastel-ui.vercel.app/***") // Permite o domínio do frontend
+        registry.addMapping("/**") // Mapeia todos os endpoints /Controllers/**
+                .allowedOrigins("http://localhost:8080", "http://localhost:8081") // Permite o domínio do frontend
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);

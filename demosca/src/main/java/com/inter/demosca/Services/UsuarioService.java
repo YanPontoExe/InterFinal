@@ -1,17 +1,9 @@
 package com.inter.demosca.Services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+// Importações desnecessárias removidas (como javax.swing.JOptionPane, java.sql.*)
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.JOptionPane;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,35 +13,44 @@ import com.inter.demosca.Repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor 
 public class UsuarioService {
-    private final UsuarioRepository UsuarioRepository;
 
-     public UsuarioEntity incluir(UsuarioEntity Usuario) {
+    private final PasswordEncoder passwordEncoder;
+    
+    private final UsuarioRepository usuarioRepository; 
 
-        return UsuarioRepository.save(Usuario);
+    public UsuarioEntity incluir(UsuarioEntity usuario) {
+        // Uso do nome do campo corrigido:
+        return usuarioRepository.save(usuario);
     }
-    public UsuarioEntity editar(int id, UsuarioEntity Usuario) {
-        // Verifique se a Usuario existe
-        Optional<UsuarioEntity> UsuarioExistente = 
-        UsuarioRepository.findById(id);
 
-        if (UsuarioExistente.isPresent()) {
-            // Atualiza a Usuario
-            UsuarioEntity UsuarioAtualizada = UsuarioExistente.get();
-            UsuarioAtualizada.setUsuario(Usuario.getUsuario());
-            UsuarioAtualizada.setSenha(Usuario.getSenha());
+    public UsuarioEntity editar(int id, UsuarioEntity usuario) {
+        Optional<UsuarioEntity> usuarioExistente = 
+        usuarioRepository.findById(id);
+
+        if (usuarioExistente.isPresent()) {
+            UsuarioEntity usuarioAtualizada = usuarioExistente.get();
+            usuarioAtualizada.setUsername(usuario.getUsername());
+            usuarioAtualizada.setPassword(usuario.getPassword());
             
-            return UsuarioRepository.save(UsuarioAtualizada);  // Salva o Usuario atualizado
+            return usuarioRepository.save(usuarioAtualizada);
         } else {
-            // Caso o Usuario não exista, retorna null
             return null;
         }
     }
     public List<UsuarioEntity> listarTodos() {
-        return UsuarioRepository.findAll();
+        return usuarioRepository.findAll();
     }
     public void excluir(Integer id) {
-        UsuarioRepository.deleteById(id);
-}
+        usuarioRepository.deleteById(id);
+    }
+
+    public boolean validar(String username, String password) {
+        UsuarioEntity user = usuarioRepository.findByUsername(username);
+
+        if (user == null) return false;
+
+        return passwordEncoder.matches(password, user.getPassword());
+    }
 }

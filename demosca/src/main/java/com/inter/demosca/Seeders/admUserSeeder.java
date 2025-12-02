@@ -20,8 +20,8 @@ public class admUserSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if(usuarioRepository.count() == 0){
             UsuarioEntity admin = new UsuarioEntity();
-            admin.setUsuario("Administrador");
-            admin.setSenha(passwordEncoder.encode("admin123"));
+            admin.setUsername("Administrador");
+            admin.setPassword(passwordEncoder.encode("admin123"));
             usuarioRepository.save(admin);
         }
     }

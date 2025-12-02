@@ -41,7 +41,9 @@ public class SecurityConfigWeb {
                     "/Usuario",
                     "/Dashboard/stats", 
                     "/Dashboard/stats/**", 
-                    "/Marcas"
+                    "/Marcas", 
+                    "/cadastrar",
+                    "/api/login"
                 ).permitAll()
                 .anyRequest().authenticated()
             )

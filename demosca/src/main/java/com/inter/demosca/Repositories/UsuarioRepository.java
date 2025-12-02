@@ -9,5 +9,6 @@ import com.inter.demosca.Entities.UsuarioEntity;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer>{
-    Optional<UsuarioEntity> findByUsuario(String usuario);
+    UsuarioEntity findByUsername(String usuario);
+
 }

@@ -18,17 +18,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UsuarioEntity user = usuarioRepository.findByUsuario(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+    UsuarioEntity user = usuarioRepository.findByUsername(username);
 
-        return org.springframework.security.core.userdetails.User
-                .withUsername(user.getUsuario())   // seu campo de nome
-                .password(user.getSenha())         // senha BCRYPT do banco
-                .roles("USER")                     // permissões
-                .build();
+    if (user == null) {
+        throw new UsernameNotFoundException("Usuário não encontrado");
     }
+
+    return org.springframework.security.core.userdetails.User
+            .withUsername(user.getUsername())
+            .password(user.getPassword())
+            .roles("USER")
+            .build();
+}
+
 }
 
 

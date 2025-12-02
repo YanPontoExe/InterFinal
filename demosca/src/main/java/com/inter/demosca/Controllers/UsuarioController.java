@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/Usuario") //nomeando o path do Endpoint do controller, para ser executado no postman
+@RequestMapping(value = "/api/Usuario") //nomeando o path do Endpoint do controller, para ser executado no postman
 
 public class UsuarioController {
     private final UsuarioService UsuarioService;
