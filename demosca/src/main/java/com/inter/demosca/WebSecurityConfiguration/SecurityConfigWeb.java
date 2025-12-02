@@ -3,6 +3,9 @@ package com.inter.demosca.WebSecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,27 +27,43 @@ public class SecurityConfigWeb {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
+            .authenticationProvider(authProvider())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/", 
-                    "/login",          // permite acesso à sua página de login
                     "/css/**", 
                     "/js/**", 
                     "/images/**",
                     "/cadastro", 
-                    "/cadastrar"
+                    "/cadastrar", 
+                    "/Usuario/auth", 
+                    "/Usuarios",
+                    "/Usuario",
+                    "/Dashboard/stats", 
+                    "/Dashboard/stats/**", 
+                    "/Marcas"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form
-                .loginPage("/login")                 // sua página GET
-                .loginProcessingUrl("/process-login") // endpoint POST tratado pelo Spring
-                .defaultSuccessUrl("/", true)   // página após login
-                .permitAll()
-            );
-
+            .formLogin(form -> form.disable());
+                
         return http.build();
     }
+    
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
+        return authProvider;
+    }
+    
 }
 
 

@@ -19,7 +19,7 @@ import com.inter.demosca.Services.EstoqueService;
 import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
-@RequestMapping(value = "/Estoque") //nomeando o path do Endpoint do controller, para ser executado no postman
+@RequestMapping(value = "api/Estoque") //nomeando o path do Endpoint do controller, para ser executado no postman
 
 public class EstoqueController {
  private final EstoqueService EstoqueService;

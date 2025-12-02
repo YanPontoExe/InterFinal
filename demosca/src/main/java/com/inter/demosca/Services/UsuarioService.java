@@ -23,19 +23,33 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
-     @Autowired
-    private UsuarioRepository repo;
+    private final UsuarioRepository UsuarioRepository;
 
-    @Autowired
-    private PasswordEncoder encoder;
+     public UsuarioEntity incluir(UsuarioEntity Usuario) {
 
-    public void salvar(String username, String senhaPura) {
-
-        UsuarioEntity u = new UsuarioEntity();
-        u.setUsuario(username);
-        u.setSenha(encoder.encode(senhaPura)); // <<< AQUI CRIPTOGRAFA
-
-        repo.save(u);
+        return UsuarioRepository.save(Usuario);
     }
+    public UsuarioEntity editar(int id, UsuarioEntity Usuario) {
+        // Verifique se a Usuario existe
+        Optional<UsuarioEntity> UsuarioExistente = 
+        UsuarioRepository.findById(id);
 
+        if (UsuarioExistente.isPresent()) {
+            // Atualiza a Usuario
+            UsuarioEntity UsuarioAtualizada = UsuarioExistente.get();
+            UsuarioAtualizada.setUsuario(Usuario.getUsuario());
+            UsuarioAtualizada.setSenha(Usuario.getSenha());
+            
+            return UsuarioRepository.save(UsuarioAtualizada);  // Salva o Usuario atualizado
+        } else {
+            // Caso o Usuario não exista, retorna null
+            return null;
+        }
+    }
+    public List<UsuarioEntity> listarTodos() {
+        return UsuarioRepository.findAll();
+    }
+    public void excluir(Integer id) {
+        UsuarioRepository.deleteById(id);
+}
 }

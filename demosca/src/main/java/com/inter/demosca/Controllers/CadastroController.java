@@ -5,26 +5,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.inter.demosca.Services.UsuarioService;
 
-@Controller
-public class CadastroController {
+// @RestController
+// public class CadastroController {
 
-    @Autowired
-    private UsuarioService usuarioService;
+//     @Autowired
+//     private UsuarioService usuarioService;
 
-    @GetMapping("/cadastro")
-    public String mostrarCadastro() {
-        return "cadastro";
-    }
+//     @GetMapping("/cadastro")
+//     public String mostrarCadastro() {
+//         return "cadastro";
+//     }
 
-    @PostMapping("/cadastrar")
-    public String cadastrar(@RequestParam String username,
-                            @RequestParam String password) {
+//     @PostMapping("/cadastrar")
+//     public String cadastrar(@RequestParam String username,
+//                             @RequestParam String password) {
 
-        usuarioService.salvar(username, password);
+//         usuarioService.incluir(Usuario);
 
-        return "redirect:/login";
-    }
-}
+//         return "redirect:/login";
+//     }
+// }

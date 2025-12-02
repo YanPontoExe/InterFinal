@@ -11,8 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 	"com.inter.demosca.Entities",
 	"com.inter.demosca.Repositories",
 	"com.inter.demosca.Services",
-	"com.inter.demosca.WebSecurityConfiguration",     
-	"com.inter.demosca.resources.templates"      
+	"com.inter.demosca.WebSecurityConfiguration"
 })
 public class DemoscaApplication {
 

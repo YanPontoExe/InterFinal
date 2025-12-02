@@ -35,8 +35,5 @@ public class NavigationController {
     // }
 
     
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login"; // login.html
-    }
+    
 }
