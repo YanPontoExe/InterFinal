@@ -2,61 +2,64 @@ package com.inter.demosca.Controllers;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import com.inter.demosca.Entities.UsuarioEntity;
 import com.inter.demosca.Services.UsuarioService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 public class CadastroController {
 
     private final PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private UsuarioService usuarioService;
-
-    CadastroController(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
+    private final UsuarioService usuarioService;
 
     @PostMapping("/cadastrar")
-public ResponseEntity<?> cadastrar(@RequestBody UsuarioEntity dto) {
-    // ...
-    UsuarioEntity usuario = new UsuarioEntity();
-    usuarioService.incluir(usuario);
+    public ResponseEntity<?> cadastrar(@RequestBody UsuarioEntity dto) {
+        
+        UsuarioEntity usuario = new UsuarioEntity();
+        
+        usuario.setUsername(dto.getUsername()); 
 
-    // Retorna um objeto JSON simples
-    return ResponseEntity.ok(
-        Map.of("message", "Usuário cadastrado com sucesso!")
-    );
-}
+        String senhaCriptografada = passwordEncoder.encode(dto.getPassword());
+        usuario.setPassword(senhaCriptografada);
+        
+        try {
+            usuarioService.incluir(usuario);
 
-    @PostMapping("/api/login")
-public ResponseEntity<?> login(@RequestBody UsuarioEntity dto) {
-
-    boolean valido = usuarioService.validar(dto.getUsername(), dto.getPassword());
-
-    if (!valido) {
-        // CORREÇÃO: Retorna uma Map (JSON) com a mensagem de erro
-        return ResponseEntity.status(401).body(
-            Map.of("message", "Usuário ou senha inválidos")
-        );
+            return ResponseEntity.ok(
+                Map.of("message", "Usuário cadastrado com sucesso!")
+            );
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(409).body(
+                Map.of("message", "O nome de usuário já está em uso ou faltam dados obrigatórios.")
+            );
+        }
     }
 
-    // O caminho de sucesso já retorna JSON
-    return ResponseEntity.ok(
-        Map.of(
-            "token", "token_fake_123",
-            "user", dto.getUsername()
-        )
-    );
-}
+    @PostMapping("/api/login")
+    public ResponseEntity<?> login(@RequestBody UsuarioEntity dto) {
+
+        boolean valido = usuarioService.validar(dto.getUsername(), dto.getPassword());
+
+        if (!valido) {
+            return ResponseEntity.status(401).body(
+                Map.of("message", "Usuário ou senha inválidos")
+            );
+        }
+
+        return ResponseEntity.ok(
+            Map.of(
+                "token", "token_fake_123",
+                "user", dto.getUsername()
+            )
+        );
+    }
 }

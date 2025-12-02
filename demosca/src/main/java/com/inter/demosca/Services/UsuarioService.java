@@ -1,6 +1,5 @@
 package com.inter.demosca.Services;
 
-// Importações desnecessárias removidas (como javax.swing.JOptionPane, java.sql.*)
 import java.util.List;
 import java.util.Optional;
 
@@ -13,15 +12,13 @@ import com.inter.demosca.Repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor 
+@RequiredArgsConstructor
 public class UsuarioService {
 
     private final PasswordEncoder passwordEncoder;
-    
     private final UsuarioRepository usuarioRepository; 
 
     public UsuarioEntity incluir(UsuarioEntity usuario) {
-        // Uso do nome do campo corrigido:
         return usuarioRepository.save(usuario);
     }
 
