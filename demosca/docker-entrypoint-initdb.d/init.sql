@@ -76,10 +76,10 @@ BEGIN
         BEGIN TRANSACTION;
 
         SELECT
-            m.id_movimentacao,
+            m.id_movimentacao, 
             m.quantidade,
             mat.descricao AS nome_material,
-            u.usuario as usuario
+            u.username as usuario
         FROM tb_movimentacao m
         INNER JOIN tb_material mat     ON mat.id_material = m.cod_material
         Left join tb_usuario u		   ON m.cod_usuario = u.id_usuario 
@@ -146,6 +146,19 @@ BEGIN
     INNER JOIN inserted i ON i.id_movimentacao = m.id_movimentacao;
 END;
 
+CREATE TRIGGER trg_funcionario_data_contratacao
+ON tb_funcionario
+AFTER INSERT
+AS
+BEGIN
+    
+    UPDATE T
+    SET T.data_contratacao = GETDATE() 
+    FROM tb_funcionario AS T
+    INNER JOIN Inserted AS I ON T.id_funcionario = I.id_funcionario;
+
+END;
+
 
 --Inserção de dados em todas as tabelas presentes no sistema
 
@@ -174,7 +187,7 @@ INSERT INTO tb_funcionario (nome_funcionario, setor, turno, data_contratacao, st
 ('Júlia Pires', 'Expedição', 'Manhã', GETDATE(), 1);
 
 
-INSERT INTO tb_usuario (usuario, senha) VALUES
+INSERT INTO tb_usuario (username, senha) VALUES
 ('davi.almox', 'senha123'), -- Adm
 ('eduardo.n', 'senha123'),
 ('fernanda.m', 'senha123'),

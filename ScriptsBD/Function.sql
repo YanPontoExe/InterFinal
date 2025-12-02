@@ -1,4 +1,4 @@
-CREATE FUNCTION fn_totalMovimentacoesMaterial(@id_material INT)
+sCREATE FUNCTION fn_totalMovimentacoesMaterial(@id_material INT)
 RETURNS INT
 AS
 BEGIN
