@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Mapeia todos os endpoints /Controllers/**
-                .allowedOrigins("http://localhost:8080", "http://localhost:8081") // Permite o domínio do frontend
+                .allowedOrigins("http://localhost:8080", "http://localhost:8081", "http://localhost:8082") // Permite o domínio do frontend
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
