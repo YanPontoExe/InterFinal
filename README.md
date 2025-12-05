@@ -42,7 +42,7 @@ Siga os passos para configurar o ambiente de desenvolvimento.
     * Preencha as seguintes variáveis (exemplos):
         ```env
         # Configurações do Banco de Dados
-        DB_HOST=[host_do_seu_db]
+        DB_HOST=localhost
         DB_USER=sa
         DB_PASSWORD=@A123456
         DB_NAME=testeInter1
