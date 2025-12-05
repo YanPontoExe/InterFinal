@@ -21,8 +21,8 @@ Siga os passos para configurar o ambiente de desenvolvimento.
 
 ### Pré-requisitos
 
-* Node.js (Versão Mínima: [v25.2.1,])
-* Java (Versão Mínima: [v17])
+* Node.js (Versão Mínima: v25.2.1)
+* Java (Versão Mínima: v17)
 * **Acesso a uma instância de SQL Server**
 
 ### Passo a Passo
