@@ -21,7 +21,6 @@ import com.inter.demosca.Entities.MaterialEntity;
 import com.inter.demosca.Services.MaterialService;
 
 import lombok.RequiredArgsConstructor;
-@CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
 @RequestMapping(value = "/Material") //nomeando o path do Endpoint do controller, para ser executado no postman
