@@ -1,7 +1,3 @@
-IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'interD')
-BEGIN
-    CREATE DATABASE [interD];
-END;
 
 --FUNCTIONS--
 
