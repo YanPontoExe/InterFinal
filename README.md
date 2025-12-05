@@ -58,7 +58,11 @@ Acesse o diretório
 
     .../InterFinal/demosca/src/main/java/com/inter/demosca 
     
-abra o arquivo DemoscaApplication.java , e inicialize o servidor com o comando run acima da classe main.
+abra o arquivo 
+
+    DemoscaApplication.java 
+
+ inicialize o servidor com o comando `run` acima da classe `main`.
    
 O servidor estará acessível em `http://localhost:8080`.
 
