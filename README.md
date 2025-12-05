@@ -21,8 +21,8 @@ Siga os passos para configurar o ambiente de desenvolvimento.
 
 ### Pré-requisitos
 
-* Node.js (Versão Mínima: [v25.2.1,])
-* Java (Versão Mínima: [v17])
+* Node.js (Versão Mínima: v25.2.1)
+* Java (Versão Mínima: v17)
 * **Acesso a uma instância de SQL Server**
 
 ### Passo a Passo
@@ -42,14 +42,10 @@ Siga os passos para configurar o ambiente de desenvolvimento.
     * Preencha as seguintes variáveis (exemplos):
         ```env
         # Configurações do Banco de Dados
-        DB_HOST=[host_do_seu_db]
+        DB_HOST=localhost
         DB_USER=sa
         DB_PASSWORD=@A123456
         DB_NAME=testeInter1
-
-        # Configurações de Segurança
-        SECRET_KEY=[sua_chave_secreta_aqui]
-        JWT_EXPIRATION_DAYS=7
         ```
 
 4.  **Inicie o Servidor:**
