@@ -46,10 +46,6 @@ Siga os passos para configurar o ambiente de desenvolvimento.
         DB_USER=sa
         DB_PASSWORD=@A123456
         DB_NAME=testeInter1
-
-        # Configurações de Segurança
-        SECRET_KEY=[sua_chave_secreta_aqui]
-        JWT_EXPIRATION_DAYS=7
         ```
 
 4.  **Inicie o Servidor:**
