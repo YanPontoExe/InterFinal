@@ -1,0 +1,15 @@
+--Backup
+BACKUP DATABASE interD
+TO DISK = 'C:\backups\backup_interD.bak'
+WITH INIT;
+
+--Restore
+ALTER DATABASE interD 
+SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+
+RESTORE DATABASE interD
+FROM DISK = 'C:\backups\backup_interD.bak'
+WITH REPLACE;
+
+ALTER DATABASE interD 
+SET MULTI_USER;

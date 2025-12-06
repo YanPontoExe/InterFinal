@@ -129,3 +129,13 @@ INSERT INTO tb_saida (id_movimentacao, cod_funcionario, motivo, data_saida) VALU
 (18, 1, 'Consumo - Produção A', '2025-11-27 10:30:00'),
 (19, 3, 'Manutenção Preventiva', '2025-11-27 14:00:00'),
 (20, 10, 'Devolução ao Fornecedor', '2025-11-28 09:00:00');
+
+SELECT * FROM tb_setor;
+SELECT * FROM tb_funcionario;
+SELECT * FROM tb_usuario;
+SELECT * FROM tb_fornecedor;
+SELECT * FROM tb_material;
+SELECT * FROM tb_marca;
+SELECT * FROM tb_movimentacao;
+SELECT * FROM tb_entrada;
+SELECT * FROM tb_saida;

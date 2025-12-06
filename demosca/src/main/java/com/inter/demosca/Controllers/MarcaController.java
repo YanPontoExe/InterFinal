@@ -19,7 +19,7 @@ import com.inter.demosca.Services.MarcaService;
 import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
-@RequestMapping(value = "api/Marca") //nomeando o path do Endpoint do controller, para ser executado no postman
+@RequestMapping(value = "/api/Marca") //nomeando o path do Endpoint do controller, para ser executado no postman
 
 public class MarcaController {
     private final MarcaService MarcaService;

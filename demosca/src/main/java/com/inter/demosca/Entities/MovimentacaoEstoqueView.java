@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "vw_movimentacao_estoque")
 public class MovimentacaoEstoqueView {
-
+    //atributos da view
     @Id
     @Column(name = "material") // Aqui precisa ser algo único; se material não for único, usar @IdClass
     private String material;
