@@ -1,4 +1,4 @@
---inserts das tabelas para teste, depois vou configurar para dar automatico
+--Inserção de dados em todas as tabelas presentes no sistema
 
 INSERT INTO tb_setor (descricao) VALUES
 ('Produção A'),
@@ -12,8 +12,6 @@ INSERT INTO tb_setor (descricao) VALUES
 ('Administrativo'),
 ('Vendas');
 
-select * from tb_setor
-
 INSERT INTO tb_funcionario (nome_funcionario, setor, turno, data_contratacao, status) VALUES
 ('Ana Paula Costa', 'Produção A', 'Manhã', GETDATE(), 1),
 ('Bruno Souza Lima', 'Produção B', 'Tarde', GETDATE(), 1),
@@ -26,21 +24,19 @@ INSERT INTO tb_funcionario (nome_funcionario, setor, turno, data_contratacao, st
 ('Igor Freire', 'Manutenção', 'Manhã', DATEADD(YEAR, -5, GETDATE()), 2), -- Inativo
 ('Júlia Pires', 'Expedição', 'Manhã', GETDATE(), 1);
 
-select * from tb_funcionario
 
-INSERT INTO tb_usuario (cod_funcionario, usuario, senha, status, tipo_usuario) VALUES
-(4, 'davi.almox', 'senha123', 1, 2), -- Adm
-(5, 'eduardo.n', 'senha123', 1, 1),
-(6, 'fernanda.m', 'senha123', 1, 1),
-(1, 'ana.paula', 'senha123', 1, 1),
-(2, 'bruno.s', 'senha123', 1, 1),
-(3, 'carla.m', 'senha123', 1, 1),
-(7, 'gabriel.s', 'senha123', 1, 1),
-(8, 'helena.b', 'senha123', 1, 1),
-(9, 'igor.f', 'senha123', 0, 1), -- Inativo
-(10, 'julia.p', 'senha123', 1, 2); -- Adm
+INSERT INTO tb_usuario (username, password) VALUES
+('davi.almox', 'senha123'), -- Adm
+('eduardo.n', 'senha123'),
+('fernanda.m', 'senha123'),
+('ana.paula', 'senha123'),
+('bruno.s', 'senha123'),
+('carla.m', 'senha123'),
+('gabriel.s', 'senha123'),
+('helena.b', 'senha123'),
+('igor.f', 'senha123'), -- Inativo
+('julia.p', 'senha123'); -- Adm
 
-select * from tb_usuario
 
 INSERT INTO tb_fornecedor (nome_fornecedor, cnpj) VALUES
 ('Alpha Componentes', '11.111.111/0001-11'),
@@ -54,9 +50,8 @@ INSERT INTO tb_fornecedor (nome_fornecedor, cnpj) VALUES
 ('Lambda Ferramentas', '99.999.999/0001-99'),
 ('Omega Máquinas', '00.000.000/0001-00');
 
-select * from tb_fornecedor
 
-INSERT INTO tb_material (descricao, marca, id_fornecedor, data_cadastro, status) VALUES
+INSERT INTO tb_material (descricao, marca, cod_fornecedor, data_cadastro, status) VALUES
 ('Parafuso M8', 'WAP', 1, GETDATE(), 1),
 ('Resina ABS Branca', 'PolyChem', 2, GETDATE(), 1),
 ('Tinta Epóxi Azul', 'Pintalux', 3, GETDATE(), 1),
@@ -68,7 +63,6 @@ INSERT INTO tb_material (descricao, marca, id_fornecedor, data_cadastro, status)
 ('Broca 5mm HSS', 'StarDrill', 9, GETDATE(), 1),
 ('Motor Elétrico 5CV', 'WEG', 10, GETDATE(), 1);
 
-select * from tb_material
 
 INSERT INTO tb_marca (nome_marca, pais_origem, descricao_marca, data_cadastro, status) VALUES
 ('WAP', 'Brasil', 'Parafusos e Fixadores', GETDATE(), 1),
@@ -82,13 +76,12 @@ INSERT INTO tb_marca (nome_marca, pais_origem, descricao_marca, data_cadastro, s
 ('StarDrill', 'EUA', 'Brocas e Usinagem', GETDATE(), 1),
 ('WEG', 'Brasil', 'Motores Elétricos', GETDATE(), 1);
 
-select * from tb_marca
 
 -- 10 Entradas (IDs 1-10) e 10 Saídas (IDs 11-20)
 INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
 -- Entradas (cod_material 1 a 10)
-(1, 500, 1),
-(2, 100, 1),
+(1001, 500, 1),
+(1002, 100, 1),
 (3, 200, 2),
 (4, 5, 1),
 (5, 10, 3),
@@ -109,18 +102,10 @@ INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
 (9, 1, 6),
 (10, 1, 10);
 
-select * from tb_movimentacao
-where cod_material = 3
-
---Insert teste para ver diferença na fucntion em pratica
-INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
-(1, 500, 1),
-(2, 100, 1);
-
 
 -- id_movimentacao de 1 a 10
 INSERT INTO tb_entrada (id_movimentacao, cod_fornecedor, nota_fiscal, data_entrada) VALUES
-(1, 1, '0001-A', '2025-11-20 10:00:00'),
+(2, 1, '0001-A', '2025-11-20 10:00:00'),
 (2, 2, '0002-B', '2025-11-20 11:30:00'),
 (3, 3, '0003-C', '2025-11-21 08:00:00'),
 (4, 4, '0004-D', '2025-11-21 14:00:00'),
@@ -131,11 +116,10 @@ INSERT INTO tb_entrada (id_movimentacao, cod_fornecedor, nota_fiscal, data_entra
 (9, 9, '0009-I', '2025-11-24 09:00:00'),
 (10, 10, '0010-J', '2025-11-24 13:00:00');
 
-select * from tb_entrada
 
 -- id_movimentacao de 11 a 20
 INSERT INTO tb_saida (id_movimentacao, cod_funcionario, motivo, data_saida) VALUES
-(11, 1, 'Consumo - Produção A', '2025-11-25 08:30:00'),
+(1, 1, 'Consumo - Produção A', '2025-11-25 08:30:00'),
 (12, 2, 'Consumo - Produção B', '2025-11-25 10:00:00'),
 (13, 3, 'Manutenção Corretiva', '2025-11-25 14:00:00'),
 (14, 1, 'Consumo - Produção A', '2025-11-26 09:10:00'),
@@ -145,21 +129,3 @@ INSERT INTO tb_saida (id_movimentacao, cod_funcionario, motivo, data_saida) VALU
 (18, 1, 'Consumo - Produção A', '2025-11-27 10:30:00'),
 (19, 3, 'Manutenção Preventiva', '2025-11-27 14:00:00'),
 (20, 10, 'Devolução ao Fornecedor', '2025-11-28 09:00:00');
-
-select * from tb_saida
-
-INSERT INTO tb_estoque (cod_material, id_material, qtd_max, qtd_atual, qtd_min) VALUES
-(1, 1001, 100, 50, 10),
-(2, 1002, 200, 150, 20),
-(3, 1003, 300, 250, 30),
-(4, 1004, 150, 75, 15),
-(5, 1005, 500, 400, 50),
-(6, 1006, 50, 25, 5),
-(7, 1007, 120, 100, 10),
-(8, 1008, 200, 180, 30),
-(9, 1009, 350, 200, 25),
-(10, 1010, 600, 500, 60);
-
-select * from tb_estoque
-
-
