@@ -8,7 +8,7 @@ AS
 BEGIN
     DECLARE @total INT;
 
-    SELECT @total = COUNT(*), 
+    SELECT @total = COUNT(*) 
     FROM tb_movimentacao
     WHERE cod_material = @id_material;
 
@@ -219,7 +219,7 @@ INSERT INTO tb_funcionario (nome_funcionario, setor, turno, data_contratacao, st
 ('Júlia Pires', 'Expedição', 'Manhã', GETDATE(), 1);
 
 
-INSERT INTO tb_usuario (username, senha) VALUES
+INSERT INTO tb_usuario (username, password) VALUES
 ('davi.almox', 'senha123'), -- Adm
 ('eduardo.n', 'senha123'),
 ('fernanda.m', 'senha123'),
@@ -274,8 +274,8 @@ INSERT INTO tb_marca (nome_marca, pais_origem, descricao_marca, data_cadastro, s
 -- 10 Entradas (IDs 1-10) e 10 Saídas (IDs 11-20)
 INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
 -- Entradas (cod_material 1 a 10)
-(1001, 500, 1),
-(1002, 100, 1),
+(1, 500, 1),
+(2, 100, 1),
 (3, 200, 2),
 (4, 5, 1),
 (5, 10, 3),
@@ -299,7 +299,7 @@ INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
 
 -- id_movimentacao de 1 a 10
 INSERT INTO tb_entrada (id_movimentacao, cod_fornecedor, nota_fiscal, data_entrada) VALUES
-(2, 1, '0001-A', '2025-11-20 10:00:00'),
+(1, 1, '0001-A', '2025-11-20 10:00:00'),
 (2, 2, '0002-B', '2025-11-20 11:30:00'),
 (3, 3, '0003-C', '2025-11-21 08:00:00'),
 (4, 4, '0004-D', '2025-11-21 14:00:00'),
