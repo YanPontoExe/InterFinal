@@ -20,7 +20,7 @@ CREATE TRIGGER tg_AttEstoqueEntrada
 ON tb_entrada
 AFTER INSERT
 AS
-BEGIN
+BEGIN 
     -- Atualizar o estoque com base na movimentação
     UPDATE e
     SET e.qtd_atual = e.qtd_atual + m.quantidade
