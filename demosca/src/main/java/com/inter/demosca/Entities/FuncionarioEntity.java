@@ -25,11 +25,11 @@ public class FuncionarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_funcionario;
     @Column(length = 50, nullable = false)
-    private String nome_funcionario;
+    private String nome_funcionario; 
     @Column(length = 30, nullable = false)
     private String setor;
     @Column(length = 10, nullable = false)
     private String turno;
     private LocalDateTime data_contratacao;
-    int status; //1 Ativo ou 2 Inativo
+    private int status; //1 Ativo ou 2 Inativo
 }

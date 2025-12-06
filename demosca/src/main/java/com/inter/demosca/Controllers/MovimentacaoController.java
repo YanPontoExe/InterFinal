@@ -1,9 +1,5 @@
 package com.inter.demosca.Controllers;
-
-import java.time.LocalDateTime;
 import java.util.List;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,27 +12,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inter.demosca.DTO.RelatorioMovimentacaoDTO;
 import com.inter.demosca.Entities.MovimentacaoEntity;
-import com.inter.demosca.Services.MovimentacaoService; 
+import com.inter.demosca.Services.MovimentacaoService;
 
 import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
 @RequestMapping(value = "/Movimentacao") //nomeando o path do Endpoint do controller, para ser executado no postman
-
+ 
 public class MovimentacaoController {
-    private final MovimentacaoService MovimentacaoService;
 
-    //Endpoint procedure no sql mapeada
+    private final MovimentacaoService MovimentacaoService;
+ 
     @GetMapping("/relatorio")
-    public ResponseEntity<?> relatorio(
+    // @RequestParam(required = false) torna o parâmetro opcional
+    public ResponseEntity<List<RelatorioMovimentacaoDTO>> relatorio(
         @RequestParam(required = false) Integer idMaterial
     ) {
-        return ResponseEntity.ok(MovimentacaoService.getRelatorio(idMaterial));
+        // O Service recebe o ID (que pode ser null) e passa para o Repository
+        List<RelatorioMovimentacaoDTO> lista = MovimentacaoService.listarTodas(idMaterial);
+        
+        return ResponseEntity.ok(lista);
     }
 
-
- 
     @GetMapping
     public ResponseEntity<List<MovimentacaoEntity>> listarTodos() {
         List<MovimentacaoEntity> lista = MovimentacaoService.listarTodos();

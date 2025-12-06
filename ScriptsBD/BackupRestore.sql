@@ -16,15 +16,11 @@ docker cp interD:/var/opt/mssql/backup/bkp.bak C:\Users\henrique.martins\Documen
 --acessao container
 docker exec -it interD bash
 
+--Setar bd para single user
+/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'interSQL101' -C -Q "ALTER DATABASE interD SET SINGLE_USER WITH ROLLBACK IMMEDIATE"
+
+--puxar o arquivo de backup para o container
 /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'interSQL101' -C -Q "RESTORE DATABASE interD FROM DISK = '/var/opt/mssql/backup/bkp.bak' WITH REPLACE"
 
---Restore
-ALTER DATABASE interD 
-SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-
-RESTORE DATABASE interD
-FROM DISK = 'C:\backups\backup_interD.bak'
-WITH REPLACE;
-
-ALTER DATABASE interD 
-SET MULTI_USER;
+--setar bd para multi user
+/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'interSQL101' -C -Q "ALTER DATABASE interD SET MULTI_USER"

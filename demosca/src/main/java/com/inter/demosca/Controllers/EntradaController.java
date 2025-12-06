@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
 @RequestMapping(value = "/Entrada") //nomeando o path do Endpoint do controller, para ser executado no postman
 
-public class EntradaController {
+public class EntradaController { 
  private final EntradaService EntradaService;
  
     //Mapeia a function SQL de Listar todas as Entradas com um novo endpoint

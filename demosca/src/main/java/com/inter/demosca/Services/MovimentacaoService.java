@@ -1,11 +1,11 @@
 package com.inter.demosca.Services;
-
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.inter.demosca.DTO.RelatorioMovimentacaoDTO;
 import com.inter.demosca.Entities.MovimentacaoEntity;
 import com.inter.demosca.Repositories.MovimentacaoRepository;
 
@@ -21,9 +21,21 @@ public class MovimentacaoService {
         return MovimentacaoRepository.save(Movimentacao);
     }
 
-    // Serviço procedure no sql mapeada
-    public List<Object[]> getRelatorio(Integer id) {
-        return MovimentacaoRepository.gerarRelatorio(id);
+        public List<RelatorioMovimentacaoDTO> listarTodas(Integer idMaterial) {
+        List<Object[]> results = MovimentacaoRepository.listarMovimentacoes(idMaterial);
+
+        return results.stream()
+                      .map(r -> new RelatorioMovimentacaoDTO(
+                          // Coluna 0: id_movimentacao (INT)
+                          (Integer) r[0], 
+                          // Coluna 1: quantidade (INT)
+                          (Integer) r[1],
+                          // Coluna 2: nome_material (VARCHAR/String)
+                          (String) r[2],
+                          // Coluna 3: usuario (VARCHAR/String) - Adicione verificação de null
+                          r[3] != null ? (String) r[3] : null
+                      ))
+                      .collect(Collectors.toList());
     }
 
     public MovimentacaoEntity editar(int id, MovimentacaoEntity Movimentacao) {

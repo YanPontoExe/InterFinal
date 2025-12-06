@@ -20,7 +20,7 @@ public class MovimentacaoEstoqueViewController {
         return service.listarTodos();
     }
 
-    @GetMapping("/{material}")
+    @GetMapping("/{material}") 
     public MovimentacaoEstoqueView buscarPorMaterial(@PathVariable String material) {
         return service.buscarPorMaterial(material);
     }

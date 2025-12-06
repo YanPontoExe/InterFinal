@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
 @RequestMapping(value = "/Material") //nomeando o path do Endpoint do controller, para ser executado no postman
 
-public class MaterialController {
+public class MaterialController { 
     private final MaterialService MaterialService;
 
     //ativação das funções do material no SQL Server
