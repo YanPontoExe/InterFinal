@@ -8,10 +8,11 @@ Esta API foi construída utilizando Java e segue o padrão arquitetural RESTful.
 
 ### 🧱 Tecnologias Chave
 
-* **Linguagem: Java
-* **Framework: Spring Boot
-* **Banco de Dados: Microsoft SQL Server
-* **Autenticação:** JWT 
+* **Linguagem:** Java
+* **Framework:** Spring Boot
+* **Banco de Dados:** Microsoft SQL Server
+* **Autenticação:** JWT
+* **Conteinerização:** Docker 
 
 ---
 
