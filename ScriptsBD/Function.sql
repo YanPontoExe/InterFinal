@@ -1,18 +1,7 @@
-drop function fn_totalMovimentacoesMaterial
-drop function fn_listarSaidas
-drop function fn_listarEntradas
-drop procedure 
-drop trigger 
-
-select * from fn_listarSaidas()
-select * from fn_listarEntradas()
-select * from fn_relatorioMovimentacaoMaterial(1)
-SELECT dbo.fn_totalMovimentacoesMaterial(2) AS total;
-
 --FUNCTIONS--
 
 -- Garanta que esta função exista e aceite o parâmetro @idMaterial
-ALTER FUNCTION fn_relatorioMovimentacaoMaterial
+ALTER FUNCTION fn_relatorioMovimentacaoMaterial --Retorna um relatório de movimentações
 (
     @idMaterial INT -- Aceita um parâmetro
 )
@@ -21,10 +10,10 @@ AS
 RETURN
 (
     SELECT
-        m.id_movimentacao, 
-        m.quantidade,
-        mat.descricao AS nome_material,
-        u.username AS usuario
+        m.id_movimentacao, --Identificador único da movimentação
+        m.quantidade, --Quantidade movimentada
+        mat.descricao AS nome_material, --Nome do material associado à movimentação
+        u.username AS usuario --Retorna o nome do usuário associado à movimentação
     FROM 
         tb_movimentacao m
     INNER JOIN 
@@ -37,7 +26,20 @@ RETURN
 
 --PROCEDURE
 
---Gera um relatório completo de todas as movimentações (entradas e saídas) realizadas sobre um Id de material específico
+--Atualiza o status de um funcionário com base no ID fornecido--
+CREATE OR ALTER PROCEDURE sp_atualizarStatusFuncionario
+    @id INT,
+    @novoStatus INT -- 1 Ativo, 2 Férias, 3 Licença, 4 Desligado
+AS
+BEGIN
+    UPDATE tb_funcionario
+    SET status = @novoStatus
+    WHERE id_funcionario = @id;
+END
+
+EXEC sp_atualizarStatusFuncionario
+    @id = 12,
+    @novoStatus = 3; -- Licença
 
 --VIEW--
 

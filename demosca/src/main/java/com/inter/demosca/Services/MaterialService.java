@@ -1,15 +1,9 @@
 package com.inter.demosca.Services;
-
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.inter.demosca.Entities.MaterialEntity;
 import com.inter.demosca.Repositories.MaterialRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @Service

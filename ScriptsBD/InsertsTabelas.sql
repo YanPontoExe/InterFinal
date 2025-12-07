@@ -51,17 +51,18 @@ INSERT INTO tb_fornecedor (nome_fornecedor, cnpj) VALUES
 ('Omega Máquinas', '00.000.000/0001-00');
 
 
-INSERT INTO tb_material (descricao, marca, cod_fornecedor, data_cadastro, status) VALUES
-('Parafuso M8', 'WAP', 1, GETDATE(), 1),
-('Resina ABS Branca', 'PolyChem', 2, GETDATE(), 1),
-('Tinta Epóxi Azul', 'Pintalux', 3, GETDATE(), 1),
-('Chapa de Aço 10mm', 'CSN', 4, GETDATE(), 1),
-('Alicate de Corte', 'ToolMaster', 5, GETDATE(), 1),
-('Embalagem Plástica P', 'Plastiko', 6, GETDATE(), 1),
-('Sensor de Proximidade', 'SensoTech', 7, GETDATE(), 1),
-('Fita Adesiva Industrial', 'TapeFix', 8, GETDATE(), 1),
-('Broca 5mm HSS', 'StarDrill', 9, GETDATE(), 1),
-('Motor Elétrico 5CV', 'WEG', 10, GETDATE(), 1);
+INSERT INTO tb_material (descricao, marca, quantidade, cod_fornecedor, data_cadastro, status) VALUES
+('Parafuso M8', 'WAP', 20, 1, GETDATE(), 1),
+('Resina ABS Branca', 'PolyChem', 233, 2, GETDATE(), 1),
+('Tinta Epóxi Azul', 'Pintalux', 3, 324, GETDATE(), 1),
+('Chapa de Aço 10mm', 'CSN', 4, 40, GETDATE(), 1),
+('Alicate de Corte', 'ToolMaster', 5, 50, GETDATE(), 1),
+('Embalagem Plástica P', 'Plastiko', 6, 75, GETDATE(), 1),
+('Sensor de Proximidade', 'SensoTech', 7, 45, GETDATE(), 1),
+('Fita Adesiva Industrial', 'TapeFix', 8, 10, GETDATE(), 1),
+('Broca 5mm HSS', 'StarDrill', 9, 40, GETDATE(), 1),
+('Motor Elétrico 5CV', 'WEG', 10, 50, GETDATE(), 1);
+
 
 
 INSERT INTO tb_marca (nome_marca, pais_origem, descricao_marca, data_cadastro, status) VALUES
@@ -80,8 +81,8 @@ INSERT INTO tb_marca (nome_marca, pais_origem, descricao_marca, data_cadastro, s
 -- 10 Entradas (IDs 1-10) e 10 Saídas (IDs 11-20)
 INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
 -- Entradas (cod_material 1 a 10)
-(1001, 500, 1),
-(1002, 100, 1),
+(1, 500, 1),
+(2, 100, 1),
 (3, 200, 2),
 (4, 5, 1),
 (5, 10, 3),
@@ -102,10 +103,11 @@ INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
 (9, 1, 6),
 (10, 1, 10);
 
+select * from tb_material
 
 -- id_movimentacao de 1 a 10
 INSERT INTO tb_entrada (id_movimentacao, cod_fornecedor, nota_fiscal, data_entrada) VALUES
-(2, 1, '0001-A', '2025-11-20 10:00:00'),
+(1, 1, '0001-A', '2025-11-20 10:00:00'),
 (2, 2, '0002-B', '2025-11-20 11:30:00'),
 (3, 3, '0003-C', '2025-11-21 08:00:00'),
 (4, 4, '0004-D', '2025-11-21 14:00:00'),

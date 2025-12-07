@@ -15,4 +15,4 @@ public interface MovimentacaoRepository extends JpaRepository<MovimentacaoEntity
            nativeQuery = true)
     List<Object[]> listarMovimentacoes(@Param("idMaterial") Integer idMaterial);
 
-} 
+}  
