@@ -1,6 +1,16 @@
---FUNCTIONS--
+drop function fn_totalMovimentacoesMaterial
+drop function fn_listarSaidas
+drop function fn_listarEntradas
+drop procedure 
+drop trigger 
+
+select * from fn_listarSaidas()
+select * from fn_listarEntradas()
+select * from fn_relatorioMovimentacaoMaterial(1)
+SELECT dbo.fn_totalMovimentacoesMaterial(2) AS total;
 
 --FUNCTIONS--
+
 -- Garanta que esta função exista e aceite o parâmetro @idMaterial
 ALTER FUNCTION fn_relatorioMovimentacaoMaterial
 (
@@ -28,7 +38,6 @@ RETURN
 --PROCEDURE
 
 --Gera um relatório completo de todas as movimentações (entradas e saídas) realizadas sobre um Id de material específico
-
 
 --VIEW--
 

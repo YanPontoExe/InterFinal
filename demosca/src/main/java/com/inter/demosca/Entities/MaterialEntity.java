@@ -32,4 +32,6 @@ public class MaterialEntity {
     @Column(nullable = false)
     private LocalDateTime dataCadastro; //data  de criação do registro do material
     private int status;
+    @Column(name = "quantidade") 
+    private int quantidade;
 }
