@@ -27,4 +27,6 @@ public class MovimentacaoEntity {
     @ManyToOne
     @JoinColumn( name="cod_usuario", nullable = false) //chave estrangeira do usuario
     private UsuarioEntity usuario;
+    private int tipo_movimentacao; // 1- entrada, 2- saída  
+    
 }

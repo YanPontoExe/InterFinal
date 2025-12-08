@@ -13,7 +13,12 @@ RETURN
         m.id_movimentacao, --Identificador único da movimentação
         m.quantidade, --Quantidade movimentada
         mat.descricao AS nome_material, --Nome do material associado à movimentação
-        u.username AS usuario --Retorna o nome do usuário associado à movimentação
+        u.username AS usuario, --Retorna o nome do usuário associado à movimentação
+        case m.tipo_movimentacao -- Retorna o tipo de movimentação
+            when 1 then 'Entrada'
+            when 2 then 'Saída'
+            else 'Não especificado'
+        end as tipo_movimentacao
     FROM 
         tb_movimentacao m
     INNER JOIN 
@@ -23,7 +28,7 @@ RETURN
     WHERE
         (@idMaterial IS NULL OR m.cod_material = @idMaterial) -- O filtro é aplicado aqui
 );
-
+select * from fn_relatorioMovimentacaoMaterial(NULL); -- Chama a função sem filtro
 --PROCEDURE
 
 --Atualiza o status de um funcionário com base no ID fornecido--

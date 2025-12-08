@@ -33,7 +33,9 @@ public class MovimentacaoService {
                           // Coluna 2: nome_material (VARCHAR/String)
                           (String) r[2],
                           // Coluna 3: usuario (VARCHAR/String) - Adicione verificação de null
-                          r[3] != null ? (String) r[3] : null
+                          r[3] != null ? (String) r[3] : null,
+                          // Coluna 4: tipo_movimentacao (INT)
+                          (String) r[4]
                       ))
                       .collect(Collectors.toList());
     }

@@ -6,7 +6,7 @@ services (repositories) = chama as repositories do tipo repository (requer ArgCo
 
 controller (o fim)
 
-
+**incluir filtro por id na tabela de relatorios e mostrar de acordo com o tipo criado**
 
  
 **MODELO ESQUELTO**

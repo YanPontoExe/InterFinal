@@ -13,4 +13,5 @@ public class RelatorioMovimentacaoDTO {
     private int quantidade;
     private String nome_material;
     private String usuario;
+    private String tipo_movimentacao;
     } 

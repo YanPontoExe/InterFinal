@@ -79,29 +79,29 @@ INSERT INTO tb_marca (nome_marca, pais_origem, descricao_marca, data_cadastro, s
 
 
 -- 10 Entradas (IDs 1-10) e 10 Saídas (IDs 11-20)
-INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario) VALUES
+INSERT INTO tb_movimentacao (cod_material, quantidade, cod_usuario, tipo_movimentacao) VALUES
 -- Entradas (cod_material 1 a 10)
-(1, 500, 1),
-(2, 100, 1),
-(3, 200, 2),
-(4, 5, 1),
-(5, 10, 3),
-(6, 50, 1),
-(7, 120, 2),
-(8, 300, 1),
-(9, 45, 3),
-(10, 1, 1),
+(1, 500, 1, 1),
+(2, 100, 1, 1),
+(3, 200, 2, 1),
+(4, 5, 1, 1),
+(5, 10, 3, 1),
+(6, 50, 1, 1),
+(7, 120, 2, 1),
+(8, 300, 1, 1),
+(9, 45, 3, 1),
+(10, 1, 1, 1),
 -- Saídas (cod_material 1 a 10)
-(1, 5, 4),
-(2, 10, 5),
-(3, 5, 6),
-(4, 1, 4),
-(5, 2, 5),
-(6, 5, 7),
-(7, 3, 8),
-(8, 10, 4),
-(9, 1, 6),
-(10, 1, 10);
+(1, 5, 4, 2),
+(2, 10, 5, 2),
+(3, 5, 6, 2),
+(4, 1, 4, 2),
+(5, 2, 5, 2),
+(6, 5, 7, 2),
+(7, 3, 8, 2),
+(8, 10, 4, 2),
+(9, 1, 6, 2),
+(10, 1, 10, 2);
 
 select * from tb_material
 
