@@ -25,9 +25,9 @@ public class MovimentacaoController {
 
     private final MovimentacaoService MovimentacaoService;
  
-    @GetMapping("/relatorio/{id") 
-    // @RequestParam(required = false) torna o parâmetro opcional
+    @GetMapping("/relatorio") 
     public ResponseEntity<List<RelatorioMovimentacaoDTO>> relatorio(
+        // @RequestParam(required = false) torna o parâmetro opcional
         @RequestParam(required = false) Integer idMaterial
     ) {
         // O Service recebe o ID (que pode ser null) e passa para o Repository
